@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation 'org.testng:testng:7.1.0'
+    implementation 'org.testng:testng:7.1.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     // https://mvnrepository.com/artifact/org.testng/testng
@@ -19,8 +20,6 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.2.2'
     // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.2.0'
-
-
 }
 
 test {
