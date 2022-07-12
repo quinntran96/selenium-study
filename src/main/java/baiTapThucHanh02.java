@@ -28,7 +28,7 @@ public class baiTapThucHanh02 {
 
         List<WebElement> buttons = chromeDriver.findElements(By.xpath("//button[contains(@onclick,'handleClick')]"));
         List<String> textOfButtons = new ArrayList<>();
-        WebElement lbStatusButton = chromeDriver.findElement(By.id("lbStatusButton"));
+        WebElement lbStatusButton = chromeDriver.findElement(By.xpath("//div[@id='lbStatusButton']"));
 
         for (int i = 0; i < buttons.size(); i++) {
             String text01 = buttons.get(i).getText();
@@ -72,8 +72,8 @@ public class baiTapThucHanh02 {
         chromeDriver.get("https://auto.fresher.dev/lessons/lession7/index.html");
         sleep(2000);
 
-        WebElement dropdownListClick = chromeDriver.findElement(By.id("dropdownMenuLink"));
-        List<WebElement> dropdownList = chromeDriver.findElements(By.className("//span[contains(@onclick,'dropdownChange')]"));
+        WebElement dropdownListClick = chromeDriver.findElement(By.xpath("//a[@id='dropdownMenuLink']"));
+        List<WebElement> dropdownList = chromeDriver.findElements(By.xpath("//span[contains(@onclick,'dropdownChange')]"));
         List<String> itemsOfDropdown = new ArrayList<>();
 
         String[] expectItems = new String[]{"Action 1", "Action 2", "Action 3"};
