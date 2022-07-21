@@ -60,7 +60,6 @@ public class baiTapThucHanh02 {
         }
 
         for (int i = 0; i < selectOptions.size(); i++) {
-
             System.out.println(textOfOptions.get(i));
             Assert.assertEquals(textOfOptions.get(i), "Option " + (i + 1));
 
@@ -107,25 +106,46 @@ public class baiTapThucHanh02 {
         chromeDriver.get("https://auto.fresher.dev/lessons/lession7/index.html");
         sleep(2000);
 
-        List<WebElement> radioButtons = chromeDriver.findElements(By.xpath("//input[@name='exampleRadios']"));
-        String valuesOfRadioButton = "//label[@for='exampleRadios%s']";
+        WebElement genderSelection = getRadioButton("//input[@name='exampleRadios']");
+        List<String> listRadioButton = new ArrayList<>();
+        if (genderSelection == null) {
+            Assert.fail("Test case fail");
+        }
+        String genderValueSelected = genderSelection.getAttribute("value");
+        Assert.assertEquals(genderValueSelected, "option3");
+        System.out.println(genderValueSelected);
+       /* for (int i = 0; i < genderSelection.size(); i++) {
+            listRadioButton.add(genderSelection.get(i).getAttribute("value"));
+            genderSelection.get(i).click();
+            Assert.assertEquals(listRadioButton, "option" + (i + 1));
+            System.out.println(listRadioButton);
+        }*/
+    }
+    @Test
+    public void baiTap5(){
+        chromeDriver.get("https://auto.fresher.dev/lessons/lession7/index.html");
+        sleep(2000);
 
+        List<WebElement> radioGroupName = chromeDriver.findElements(By.xpath("//input[@name='exampleRadios']"));
+        List<String> listRadioButton = new ArrayList<>();
+
+        for (int i = 0; i < radioGroupName.size(); i++) {
+            listRadioButton.add(radioGroupName.get(i).getAttribute("value"));
+            radioGroupName.get(i).click();
+            Assert.assertEquals(listRadioButton.get(i), "option" + (i + 1));
+            System.out.println(listRadioButton.get(i));
+        }
+    }
+
+    private WebElement getRadioButton(String groupName) {
+        List<WebElement> radioButtons = chromeDriver.findElements(By.xpath(groupName));
         for (int i = 0; i < radioButtons.size(); i++) {
-
-            WebElement radioButtonByItem = radioButtons.get(i);
-            radioButtonByItem.click();
-
-            String values = String.format(valuesOfRadioButton, (i + 1));
-            WebElement labelOfRadioButton = chromeDriver.findElement(By.xpath(values));
-
-            if (i == 0) {
-                Assert.assertEquals(labelOfRadioButton.getText(), "Male");
-            } else if (i == 1) {
-                Assert.assertEquals(labelOfRadioButton.getText(), "Female");
-            } else {
-                Assert.assertEquals(labelOfRadioButton.getText(), "Gay");
+            boolean isSelected = radioButtons.get(i).isSelected();
+            if (isSelected) {
+                return radioButtons.get(i);
             }
         }
+        return null;
     }
 
     @AfterTest
