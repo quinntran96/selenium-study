@@ -81,8 +81,13 @@ public class baiTapThucHanh03 {
         chromeDriver.get("https://www.sketch.com/signup");
         WebElement yourFirstNameTextBox = chromeDriver.findElement(By.xpath("//input[contains(@class,'gHtjd') and @type = 'text']"));
         yourFirstNameTextBox.sendKeys("Tran Lan Anh");
-        sleep(2000);
-        Assert.assertEquals(yourFirstNameTextBox.getAttribute("value"), "Tran Lan Anh");
+        yourFirstNameTextBox.sendKeys("a");
+        String value = yourFirstNameTextBox.getAttribute("value");
+        for (int i = 0; i < value.length() + 5 ; i++) {
+            yourFirstNameTextBox.sendKeys(Keys.BACK_SPACE);
+        }
+        sleep(5000);
+       // Assert.assertEquals(yourFirstNameTextBox.getAttribute("value"), "Tran Lan Anh");
         //yourFirstNameTextBox.clear();
     }
 
