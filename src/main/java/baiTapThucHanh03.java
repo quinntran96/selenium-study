@@ -106,8 +106,6 @@ public class baiTapThucHanh03 {
             yourFirstNameTextBox.sendKeys(Keys.BACK_SPACE);
         }
         sleep(5000);
-       // Assert.assertEquals(yourFirstNameTextBox.getAttribute("value"), "Tran Lan Anh");
-        //yourFirstNameTextBox.clear();
     }
 
     @Test
@@ -140,16 +138,7 @@ public class baiTapThucHanh03 {
             selectYourRoleDropDown.click();
             sleep(2000);
         }
-
-//        boolean isEqual = true;
-//        for (int i = 0; i < optionsOfDropdownList.size(); i++) {
-//            if (!actualOptionsOfDropdownList.get(i).equals(expectedOptionsOfDropdownList.get(i))) {
-//                isEqual = false;
-//            }
-//        }
         Assert.assertEquals(actualOptionsOfDropdownList, expectedOptionsOfDropdownList);
-//        Assert.assertTrue(isEqual);
-
     }
 
     @DataProvider(name = "dataemail")
