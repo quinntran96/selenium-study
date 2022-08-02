@@ -111,7 +111,6 @@ public class baiTapThucHanh02 {
         chromeDriver.get("https://auto.fresher.dev/lessons/lession7/index.html");
         sleep(2000);
 
-<<<<<<< HEAD
         WebElement genderSelection = getRadioButton("//input[@name='exampleRadios']");
         List<String> listRadioButton = new ArrayList<>();
         if (genderSelection == null) {
@@ -145,52 +144,12 @@ public class baiTapThucHanh02 {
 
     private WebElement getRadioButton(String groupName) {
         List<WebElement> radioButtons = chromeDriver.findElements(By.xpath(groupName));
-=======
-        WebElement genderSelected = getRadioChecked("//input[@name='exampleRadios']");
-        if(genderSelected == null)
-        {
-            // TODO:
-            Assert.fail("Gender phai dc selected");
-        }
-
-        String genderValueSelected = genderSelected.getAttribute("value");
-        Assert.assertEquals(genderValueSelected, "option3");
-
-//        List<WebElement> radioButtons = chromeDriver.findElements(
-//            By.xpath("//input[@name='exampleRadios']"));
-//        String valuesOfRadioButton = "//label[@for='exampleRadios%s']";
-//
-//        for (int i = 0; i < radioButtons.size(); i++) {
-//
-//            WebElement radioButtonByItem = radioButtons.get(i);
-//            radioButtonByItem.click();
-//
-//            String values = String.format(valuesOfRadioButton, (i + 1));
-//            WebElement labelOfRadioButton = chromeDriver.findElement(By.xpath(values));
-//
-//            if (i == 0) {
-//                Assert.assertEquals(labelOfRadioButton.getText(), "Male");
-//            } else if (i == 1) {
-//                Assert.assertEquals(labelOfRadioButton.getText(), "Female");
-//            } else {
-//                Assert.assertEquals(labelOfRadioButton.getText(), "Gay");
-//            }
-//        }
-    }
-
-    private WebElement getRadioChecked(String xpath) {
-        List<WebElement> radioButtons = chromeDriver.findElements(By.xpath(xpath));
->>>>>>> master
         for (int i = 0; i < radioButtons.size(); i++) {
             boolean isSelected = radioButtons.get(i).isSelected();
             if (isSelected) {
                 return radioButtons.get(i);
             }
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
         return null;
     }
 
