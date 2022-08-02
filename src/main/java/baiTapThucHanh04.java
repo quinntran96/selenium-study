@@ -79,9 +79,17 @@ public class baiTapThucHanh04 {
         chromeDriver.get("http://automationpractice.com/index.php");
         chromeDriver.manage().window().maximize();
         WebElement womenTab = chromeDriver.findElement(By.xpath("//a[@title='Women']"));
-        //WebElement topsSubTab = chromeDriver.findElement(By.xpath("//li[@class='sfHoverForce']//ul[@class='submenu-container clearfix first-in-line-xs']//a[@title='Tops']"));
         clickElementJs(womenTab);
+        WebElement subItemsIsTops = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Tops')]"));
+        WebElement subItemsISDresses = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Dresses') and @href ='http://automationpractice.com/index.php?id_category=8&controller=category']"));
+
+        clickElementJs(subItemsIsTops);
+        chromeDriver.navigate().back();
+        chromeDriver.navigate().forward();
+        WebElement subItemsIsTShirts = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'T-shirts')]"));
+
         sleep(1000);
+
     }
 
     public void clickElementJs(WebElement webElement) {
