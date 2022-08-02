@@ -1,19 +1,20 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.checkerframework.framework.qual.EnsuresQualifierIf;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.sql.SQLOutput;
-import java.util.*;
-
 public class baiTapThucHanh01 {
+
     ChromeDriver chromeDriver;
 
     @BeforeTest
@@ -28,7 +29,8 @@ public class baiTapThucHanh01 {
         chromeDriver.get("https://auto.fresher.dev/lessons/lession7/index.html");
         sleep(2000);
 
-        List<WebElement> buttons = chromeDriver.findElements(By.cssSelector("button[class='btn btn-success'], button[class='btn btn-danger']"));
+        List<WebElement> buttons = chromeDriver.findElements(
+            By.cssSelector("button[class='btn btn-success'], button[class='btn btn-danger']"));
         List<String> textOfButtons = new ArrayList<>();
         WebElement lbStatusButton = chromeDriver.findElement(By.id("lbStatusButton"));
 
@@ -129,6 +131,21 @@ public class baiTapThucHanh01 {
             }
         }
     }
+
+    @Test
+    public void testActions() {
+
+//        actions.keyDown(Keys.CONTROL);
+        chromeDriver.get("https://www.sketch.com/signup");
+        WebElement yourFirstNameTextBox = chromeDriver.findElement(
+            By.xpath("//input[contains(@class,'gHtjd') and @type = 'text']"));
+        yourFirstNameTextBox.sendKeys("Tran Lan Anh");
+        sleep(2000);
+        Actions actions = new Actions(chromeDriver);
+        actions.doubleClick(yourFirstNameTextBox).perform();
+        sleep(2000);
+    }
+
 
 
     @AfterTest
