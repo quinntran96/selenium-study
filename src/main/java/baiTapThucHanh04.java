@@ -82,16 +82,24 @@ public class baiTapThucHanh04 {
         clickElementJs(womenTab);
         WebElement subItemsIsTops = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Tops')]"));
         WebElement subItemsISDresses = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Dresses') and @href ='http://automationpractice.com/index.php?id_category=8&controller=category']"));
-
+        verifyJs(subItemsIsTops);
+        verifyJs(subItemsISDresses);
         clickElementJs(subItemsIsTops);
         chromeDriver.navigate().back();
+        verifyJs(subItemsIsTops);
+        verifyJs(subItemsISDresses);
         chromeDriver.navigate().forward();
+
         WebElement subItemsIsTShirts = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'T-shirts')]"));
 
         sleep(1000);
 
     }
 
+    public void verifyJs (WebElement webElement){
+        JavascriptExecutor executor = (JavascriptExecutor) chromeDriver;
+        executor.executeScript("return document.title");
+    }
     public void clickElementJs(WebElement webElement) {
         JavascriptExecutor executor = (JavascriptExecutor) chromeDriver;
         executor.executeScript("arguments[0].click();", webElement);
