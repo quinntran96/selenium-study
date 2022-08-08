@@ -87,7 +87,19 @@ public class baiTapThucHanh04 {
         //clickElementJs(womenTab);
 
         waitElementExisted(By.xpath("//a[@title='Women']"), 2);
+        WebElement womenTab = chromeDriver.findElement(By.xpath("//a[@title='Women']"));
+        clickElementJs(womenTab);
+        WebElement subItemsIsTops = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Tops')]"));
+        WebElement subItemsISDresses = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'Dresses') and @href ='http://automationpractice.com/index.php?id_category=8&controller=category']"));
+        verifyJs(subItemsIsTops);
+        verifyJs(subItemsISDresses);
+        clickElementJs(subItemsIsTops);
+        chromeDriver.navigate().back();
+        verifyJs(subItemsIsTops);
+        verifyJs(subItemsISDresses);
+        chromeDriver.navigate().forward();
 
+        WebElement subItemsIsTShirts = chromeDriver.findElement(By.xpath("//div[contains(@class,'block_content')]//ul[contains(@class,'tree dynamized')]//li//a[contains(text(),'T-shirts')]"));
 
         waitElementExisted(By.xpath("//abc"), 10);
 
@@ -113,6 +125,11 @@ public class baiTapThucHanh04 {
         WebElement textFrame0 = chromeDriver.findElement(By.xpath("//body/h1[contains(text(),'iframe')]"));
         String expectedText = textFrame0.getText();
         System.out.println(expectedText);
+    }
+
+    public void verifyJs (WebElement webElement){
+        JavascriptExecutor executor = (JavascriptExecutor) chromeDriver;
+        executor.executeScript("return document.title");
     }
 
     public void clickElementJs(WebElement webElement) {
