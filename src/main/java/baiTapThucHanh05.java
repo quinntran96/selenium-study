@@ -58,10 +58,11 @@ public class baiTapThucHanh05 {
         tryItButtonLocator.click();
         Alert alert = chromeDriver.switchTo().alert();
         alert.sendKeys("SW Test Academy");
+        sleep(2000);
         alert.accept();
         Assert.assertEquals(resultLocator.getText(),"Hello SW Test Academy! How are you today?");
     }
-    
+
     private void sleep(int time) {
         try {
             Thread.sleep(time);
