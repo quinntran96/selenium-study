@@ -37,6 +37,7 @@ public class baiTapThucHanh05 {
         alert.accept();
         sleep(1000);
     }
+
     @Test
     public void exercise02(){
         chromeDriver.get("https://www.w3schools.com/js/tryit.asp?filename=tryjs_confirm");
